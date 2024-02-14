@@ -10,4 +10,11 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'es1Angular_Dschoutezo';
+  numClick = 0;
+  buttonDisabled : boolean = false;
+
+  clickButton = () => {
+    this.numClick++;
+    this.buttonDisabled = true;
+  }
 }
