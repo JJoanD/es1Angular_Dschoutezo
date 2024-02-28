@@ -192,8 +192,33 @@
 <router-outlet />
 
 <h1>{{title}}</h1>
+<br><br>
+<p>nome : {{person.name}}</p>
+<p>cognome : {{person.surname}}</p>
+<p>età : {{person.age}}</p>
 
-<button (click)="clickButton()" [disabled] = "buttonDisabled">test button</button>
 
 <p>numero click = {{numClick}}</p>
+<br>
+<h3>Inserisci datri persona</h3>
+<label for="name">nome: </label><input type="text"[(ngModel)]="newPerson.name" placeholder="Mario"/>
+<br>
+<label for="surname">cognome: </label><input type="text"[(ngModel)]="newPerson.surname" placeholder="Rossi"/>
+<br>
+<label for="age">eta: </label><input type="number" [(ngModel)]="newPerson.age" min="0" max="110" />
+<br><br>
+
+<button *ngIf="!editMode" (click)="add()" [disabled] = "buttonDisabled">aggiungi perosna</button>
+<button *ngIf="editMode" (click)="completaEdit()" >comlpeta modifica</button>
+
+<div *ngFor="let person of persone; index as i ">
+  <br>
+  <hr>
+  <p>{{i}} nome: {{person.name}}</p>
+  <p>cognome: {{person.surname}}</p>
+  <p>eta: {{person.age}}</p>
+  <button (click)="delete(i)">elimina</button>
+  <button (click)="edit(i)">modifica</button> 
+  <br>
+</div>
 
